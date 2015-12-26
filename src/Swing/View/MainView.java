@@ -1,6 +1,9 @@
 package Swing.View;
 
+import Swing.Model.Note;
+
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,24 +44,38 @@ public class MainView {
         newNoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JLabel note = new JLabel("Test");
-                getNotePanel().add(note);
+                Note note = new Note();
+                note.setTitle("ÐÂ±Ê¼Ç");
+                DefaultListModel<Note> listModel = (DefaultListModel<Note>) list1.getModel();
+                listModel.addElement(note);
             }
         });
-    }
 
-    public JPanel getNotePanel() {
-        return notePanel;
+        list1.setCellRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(
+                    JList<?> list,
+                    Object value,
+                    int index,
+                    boolean isSelected,
+                    boolean cellHasFocus) {
+                return super.getListCellRendererComponent(list, ((Note)value).getTitle(), index, isSelected, cellHasFocus);
+            }
+        });
     }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Notes");
         frame.setContentPane(new MainView().Main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(640,480));
+        frame.setMinimumSize(new Dimension(640, 480));
         frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    public JPanel getNotePanel() {
+        return notePanel;
     }
 
 }
