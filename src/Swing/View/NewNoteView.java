@@ -2,6 +2,7 @@ package Swing.View;
 
 import Swing.Control.saveNote;
 import Swing.Model.Note;
+import sun.applet.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,6 +19,7 @@ public class NewNoteView {
     private JPanel NewNote;
     private static int userId;
 
+
     public NewNoteView(final JFrame frame) {
         resetButton.addActionListener(new ActionListener() {
             @Override
@@ -30,21 +32,19 @@ public class NewNoteView {
             public void actionPerformed(ActionEvent e) {
                 saveNote.save(textArea1.getText(), userId);
                 frame.dispose();
-                MainView.main(userId);
             }
         });
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                MainView.main(userId);
             }
         });
 
     }
 
 
-    public static void newNote(int id) {
+    public static void newNote(int id, JFrame mainFrame) {
         JFrame frame = new JFrame("NewNoteView");
         frame.setContentPane(new NewNoteView(frame).NewNote);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
