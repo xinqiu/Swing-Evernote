@@ -18,6 +18,7 @@ public class NewNoteView {
     private JTextArea textArea1;
     private JPanel NewNote;
     private static int userId;
+    private static MainView mFrame;
 
 
     public NewNoteView(final JFrame frame) {
@@ -32,6 +33,7 @@ public class NewNoteView {
             public void actionPerformed(ActionEvent e) {
                 saveNote.save(textArea1.getText(), userId);
                 frame.dispose();
+                mFrame.show();
             }
         });
         cancelButton.addActionListener(new ActionListener() {
@@ -44,11 +46,12 @@ public class NewNoteView {
     }
 
 
-    public static void newNote(int id, JFrame mainFrame) {
+    public static void newNote(int id, MainView mFrame) {
         JFrame frame = new JFrame("NewNoteView");
         frame.setContentPane(new NewNoteView(frame).NewNote);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+        setmFrame(mFrame);
         setUserId(id);
         frame.pack();
         frame.setVisible(true);
@@ -57,4 +60,9 @@ public class NewNoteView {
     public static void setUserId(int id) {
         userId = id;
     }
+
+    public static void setmFrame(MainView mainFrame){
+        mFrame = mainFrame;
+    }
+
 }

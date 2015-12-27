@@ -130,6 +130,8 @@
             </constraints>
             <properties>
               <background color="-394759"/>
+              <font name="Avenir Next" size="24"/>
+              <selectionBackground color="-11166721"/>
             </properties>
           </component>
         </children>

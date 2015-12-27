@@ -23,6 +23,7 @@ public class MainView {
     private JButton exitButton;
     private JPanel notePanel;
     private JList list1;
+    private JButton button1;
 
 
     public MainView(final JFrame frame) {
@@ -68,8 +69,7 @@ public class MainView {
         newNoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                NewNoteView.newNote(userId,frame);
-//                show();
+                NewNoteView.newNote(userId, MainView.this);
             }
         });
 
@@ -101,5 +101,6 @@ public class MainView {
     public static void setUserId(int id) {
         userId = id;
     }
+
 
 }
