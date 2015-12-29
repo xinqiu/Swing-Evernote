@@ -9,7 +9,7 @@ public class DBConnect {
     public static Connection Connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Access successfully!");
+//            System.out.println("Access successfully!");
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }

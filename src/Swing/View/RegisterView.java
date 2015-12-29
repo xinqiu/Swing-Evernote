@@ -53,6 +53,7 @@ public class RegisterView {
                         Swing.Control.Register.submit(usernameField.getText(), new String(passwordField.getPassword()),
                                 nameField.getText(), maleRadioButton.isSelected(), femaleRadioButton.isSelected());
                         frame.dispose();
+                        EnterView.main(null);
                         break;
                 }
 

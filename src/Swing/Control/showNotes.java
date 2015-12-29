@@ -9,22 +9,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Created by qiuxin on 15/12/27.
+ * Created by qiuxin on 15/12/29.
  */
-public class getNote {
-
-    public static String get(int id) {
+public class showNotes {
+    public static ArrayList showNotes(int id) {
         Connection con = DBConnect.Connect();
-        String sqlStr = "SELECT notes FROM notes WHERE " +
-                "(noteid=(SELECT MAX(noteid) FROM notes WHERE userid=" +
-                id+"));";
+        String sqlStr = "SELECT notes FROM notes WHERE userid=" + id + ";";
         Statement stat = null;
-        String str = null;
+        ArrayList<String> str = new ArrayList<String>();
         try {
             stat = con.createStatement();
             ResultSet rs = stat.executeQuery(sqlStr);
-            rs.next();
-            str = rs.getString("notes");
+            while (rs.next()){
+                str.add(rs.getString("notes"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
