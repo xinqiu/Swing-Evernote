@@ -108,13 +108,18 @@ public class MainView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int index = list1.getSelectedIndex();
-                Note oNote = new Note();
-                oNote = listModel.elementAt(index);
-                String info = JOptionPane.showInputDialog(null,"Please update your note");
-                if(info != null) {
-                    modifyNote.modify(info, oNote.getContent());
-                    listModel.elementAt(index).setContent(info);
-                    list1.updateUI();
+                if (index != -1) {
+                    Note oNote = new Note();
+                    oNote = listModel.elementAt(index);
+                    String info = JOptionPane.showInputDialog(null, "Please update your note");
+                    if (info != null) {
+                        modifyNote.modify(info, oNote.getContent());
+                        listModel.elementAt(index).setContent(info);
+                        list1.updateUI();
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(null,"Please select a note!");
                 }
             }
         });
