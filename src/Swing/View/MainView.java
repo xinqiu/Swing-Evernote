@@ -111,7 +111,7 @@ public class MainView {
                 Note oNote = new Note();
                 oNote = listModel.elementAt(index);
                 String info = JOptionPane.showInputDialog(null,"Please update your note");
-                if(!info.isEmpty()) {
+                if(info != null) {
                     modifyNote.modify(info, oNote.getContent());
                     listModel.elementAt(index).setContent(info);
                     list1.updateUI();
